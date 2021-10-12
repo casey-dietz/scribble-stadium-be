@@ -1,5 +1,6 @@
 const db = require('../../data/db-config');
 
+// this file (and submissionsNewRouter) will be deleted from submissions-new-schema branch
 /**
  * This function checks to see if a submission exists at the given child/story intersection,
  * and will create one if it does not.
