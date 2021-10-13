@@ -148,7 +148,7 @@ const addSubmission = (submission) => {
   return db('Submissions-New').insert(submission);
 };
 
-const updateSubmissionsBySubId = async (id, changes) => {
+const updateSubmissionBySubId = async (id, changes) => {
   const updatedSub = await db('Submissions-New').where({ id }).update(changes);
   return updatedSub;
 };
@@ -167,6 +167,6 @@ module.exports = {
   getSubmissionBySubId,
   getAllSubmissions,
   addSubmission,
-  updateSubmissionsBySubId,
+  updateSubmissionBySubId,
   removeSubmission,
 };

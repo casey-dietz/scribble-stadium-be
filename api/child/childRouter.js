@@ -140,9 +140,7 @@ router.get('/', authRequired, (req, res) => {
  *        $ref: '#/components/responses/DatabaseError'
  */
 
-//!!put authRequired back before pull request!!
-// router.get('/:id', authRequired, (req, res) => {
-router.get('/:id', (req, res) => {
+router.get('/:id', authRequired, (req, res) => {
   // Pull child ID out of the URL params
   const { id } = req.params;
 
@@ -401,17 +399,6 @@ router.delete('/:id', authRequired, (req, res) => {
  *      500:
  *        $ref: '#/components/responses/DatabaseError'
  */
-router.get('/:id', authRequired, async (req, res) => {
-  //Pull submission ID out of URL parameter
-  const { id } = req.params;
-
-  crudOperationsManager.getAll(
-    res,
-    Children.getSubmissionBySubId,
-    'Submissions',
-    id
-  );
-});
 
 /**
  * @swagger
@@ -438,7 +425,7 @@ router.get('/:id', authRequired, async (req, res) => {
  *      500:
  *        $ref: '#/components/responses/DatabaseError'
  */
-router.get('/child/:id', authRequired, async (req, res) => {
+router.get('/child/:id/submissions', authRequired, async (req, res) => {
   // Pull child ID out of URL parameter
   const { id } = req.params;
 
@@ -449,6 +436,19 @@ router.get('/child/:id', authRequired, async (req, res) => {
     id
   );
 });
+
+router.get('/child/:id/submissions/:id', authRequired, async (req, res) => {
+  //Pull submission ID out of URL parameter
+  const { id } = req.params;
+
+  crudOperationsManager.getAll(
+    res,
+    Children.getSubmissionBySubId,
+    'Submissions',
+    id
+  );
+});
+
 router.post('/child/:id/submissions', authRequired, (req, res) => {
   //childId, storyId, episodeId, episodeStartDate required in body from front-end
   const newSubmission = req.body;
@@ -460,13 +460,13 @@ router.post('/child/:id/submissions', authRequired, (req, res) => {
     newSubmission
   );
 });
-router.put('/:id', authRequired, async (req, res) => {
+router.put('/child/:id/submissions/:id', authRequired, async (req, res) => {
   const { id } = req.params;
   const changes = req.body;
 
   crudOperationsManager.update(
     res,
-    Children.updateSubmissionsBySubId,
+    Children.updateSubmissionBySubId,
     'Submission',
     id,
     changes
