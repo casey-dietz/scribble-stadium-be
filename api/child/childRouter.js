@@ -342,7 +342,7 @@ router.delete('/:id', authRequired, (req, res) => {
 
 /**
  * @swagger
- * /submission?childId={childId}&storyId={storyId}:
+ * /child/{id}/submissions/{id}:
  *  get:
  *    summary: Queries the database for information for the given submission.
  *    description: Attempts to query the database to find a submission entry at the intersection
@@ -402,7 +402,7 @@ router.delete('/:id', authRequired, (req, res) => {
 
 /**
  * @swagger
- * /submissions/child/{id}:
+ * /child/{id}/submissions:
  *  get:
  *    summary: Attempts to get all data for every submission by a given child
  *    security:
