@@ -153,8 +153,8 @@ const updateSubmissionBySubId = async (id, changes) => {
   return updatedSub;
 };
 
-const removeSubmission = (ID) => {
-  return db('Submissions-New').where({ ID }).del();
+const removeSubmission = (id) => {
+  return db('Submissions-New').where({ id }).del();
 };
 
 module.exports = {

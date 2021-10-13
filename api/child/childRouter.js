@@ -425,7 +425,7 @@ router.delete('/:id', authRequired, (req, res) => {
  *      500:
  *        $ref: '#/components/responses/DatabaseError'
  */
-router.get('/child/:id/submissions', authRequired, async (req, res) => {
+router.get('/:id/submissions', authRequired, async (req, res) => {
   // Pull child ID out of URL parameter
   const { id } = req.params;
 
@@ -437,7 +437,7 @@ router.get('/child/:id/submissions', authRequired, async (req, res) => {
   );
 });
 
-router.get('/child/:id/submissions/:id', authRequired, async (req, res) => {
+router.get('/:id/submissions/:id', authRequired, async (req, res) => {
   //Pull submission ID out of URL parameter
   const { id } = req.params;
 
@@ -449,7 +449,7 @@ router.get('/child/:id/submissions/:id', authRequired, async (req, res) => {
   );
 });
 
-router.post('/child/:id/submissions', authRequired, (req, res) => {
+router.post('/:id/submissions', authRequired, (req, res) => {
   //childId, storyId, episodeId, episodeStartDate required in body from front-end
   const newSubmission = req.body;
 
@@ -460,7 +460,7 @@ router.post('/child/:id/submissions', authRequired, (req, res) => {
     newSubmission
   );
 });
-router.put('/child/:id/submissions/:id', authRequired, async (req, res) => {
+router.put('/:id/submissions/:id', authRequired, async (req, res) => {
   const { id } = req.params;
   const changes = req.body;
 
@@ -474,7 +474,7 @@ router.put('/child/:id/submissions/:id', authRequired, async (req, res) => {
 });
 
 //Delete route for dev/admin purposes
-router.delete('/:id', authRequired, async (req, res) => {
+router.delete('/:id/submissions/:id', authRequired, async (req, res) => {
   //Pull submission ID out of URL parameter
   const { id } = req.params;
 
